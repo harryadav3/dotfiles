@@ -6,9 +6,19 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
+call plug#begin('~/.vim/plugged')
+Plug 'junegun/fzf', {'do':{ -> fzf#install() } }
+Plug 'junegunn/fzf.vim' 
+call plug#end()
 
+"Our Remaps"
 let mapleader = " "
+nnoremap <leader>pv :Vex<CR>
 nnoremap <leader>e :Ex<CR>
-" you can also change :so filepaht
+vnoremap <leader>p "_dP
+vnoremap <leader>y "+y
 
 nnoremap <leader>x :!chmod +x %<CR>
+
+
+

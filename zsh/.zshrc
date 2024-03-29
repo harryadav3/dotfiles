@@ -1,6 +1,8 @@
 #to enable vim binding in the terminal 
 bindkey -v
 
+#this is the fzf confuguration file 
+eval "$(fzf --zsh)"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -8,7 +10,7 @@ bindkey -v
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "exec ~/tmux-sessionizer\n"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
