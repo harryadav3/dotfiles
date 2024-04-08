@@ -1,5 +1,6 @@
 #to enable vim binding in the terminal 
-bindkey -v
+#bindkey -v
+set -o vi
 
 #this is the fzf confuguration file 
 eval "$(fzf --zsh)"
