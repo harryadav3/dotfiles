@@ -21,4 +21,7 @@ vnoremap <leader>y "+y
 nnoremap <leader>x :!chmod +x %<CR>
 
 
-
+" Copy to clipboard in normal and visual mode with space+y
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y" Clipboard keymaps
