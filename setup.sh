@@ -40,6 +40,7 @@ SYSTEM_UTILITIES=(
     'gnome-keyring'      # Keyring manager
     'seahorse'           # GUI for gnome-keyring
     'baobab'
+    'vlc'
 )
 
 # Audio packages
@@ -58,6 +59,8 @@ DEV_PACKAGES=(
     'gvim'               # GUI vim
     'tmux'               # Terminal multiplexer
     'stow'               # Symlink farm manager
+    'nodejs'
+    'npm'
 )
 
 # File management

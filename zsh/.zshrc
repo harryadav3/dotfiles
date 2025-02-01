@@ -111,6 +111,14 @@ source $ZSH/oh-my-zsh.sh
 # <<< conda initialize <<<
 
 
-alias ccc="cd ~/Documents/coding"
-alias ccp="cd ~/Documents/coding/projects/"
+alias ccc="cd ~/coding"
+alias cca="cd ~/coding/ai-ml/"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Start keychain and add SSH key
+#eval $(keychain --quiet --eval --agents ssh id_ed25519)
