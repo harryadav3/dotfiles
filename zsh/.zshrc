@@ -122,3 +122,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Start keychain and add SSH key
 #eval $(keychain --quiet --eval --agents ssh id_ed25519)
+#
+#eval "$(ssh-agent -s)"
+

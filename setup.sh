@@ -87,6 +87,7 @@ AUR_PACKAGES=(
     'google-chrome'      # Web browser
     'spotify'            # Music player
     'visual-studio-code-bin' # Code editor
+    'albert'
 )
 
 install_packages() {
@@ -182,3 +183,6 @@ main() {
 
 # Run the script
 main
+
+
+# also download teh neovim with git@github for the plugins update 

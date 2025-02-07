@@ -85,6 +85,7 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod1+space exec --no-startup-id albert
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -301,6 +302,9 @@ bindsym $mod+Shift+s exec flameshot gui
 
 #To use the gnome-keyring for the encryption 
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+
+#To make albert on top 
+for_window [class="albert"] floating enable, focus
 
 
 
