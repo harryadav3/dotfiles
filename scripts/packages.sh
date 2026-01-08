@@ -13,7 +13,6 @@ DEV_PACKAGES=(
     'neovim'             # Modern text editor
     'tmux'               # Terminal multiplexer
     'stow'               # Symlink farm manager
-    'fzf'                # Fuzzy finder
     'curl'               # URL retrieval utility
     'wget'               # File retrieval utility
     'ripgrep'            # Fast grep alternative (rg)

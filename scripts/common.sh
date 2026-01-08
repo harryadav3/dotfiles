@@ -335,14 +335,29 @@ change_shell_to_zsh() {
 # =============================================================================
 
 install_fzf_keybindings() {
-    log_info "Setting up fzf key bindings..."
+    log_info "Installing fzf from GitHub..."
     
-    # fzf should already be installed via package manager
-    # We just need to ensure key bindings are available
-    
-    if command -v fzf &> /dev/null; then
-        log_success "fzf is installed and ready to use"
-    else
-        log_warning "fzf not found, key bindings may not work"
+    # Check if fzf is already installed
+    if [ -d "$HOME/.fzf" ]; then
+        log_warning "fzf directory already exists at ~/.fzf"
+        
+        # Check if fzf command is available
+        if command -v fzf &> /dev/null; then
+            log_success "fzf is already installed"
+            return 0
+        else
+            log_warning "fzf directory exists but command not found, reinstalling..."
+            rm -rf "$HOME/.fzf"
+        fi
     fi
+    
+    # Clone fzf from GitHub
+    log_info "Cloning fzf repository..."
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    
+    # Run fzf install script (with auto-accept for all prompts)
+    log_info "Running fzf installation script..."
+    ~/.fzf/install --all
+    
+    log_success "fzf installed successfully from GitHub"
 }
