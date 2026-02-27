@@ -84,7 +84,6 @@ setup_ssh_machine() {
     
     # Install vim-plug
     install_vim_plug
-    install_neovim_plug
     
     # Install TPM (Tmux Plugin Manager)
     install_tpm
@@ -103,7 +102,7 @@ setup_ssh_machine() {
     log_info "Next steps:"
     log_info "1. Logout and login again (or restart your terminal)"
     log_info "2. Open vim and run :PlugInstall to install vim plugins"
-    log_info "3. Open nvim and run :PlugInstall to install neovim plugins"
+    log_info "3. Open nvim to bootstrap LazyVim plugins"
     log_info "4. Open tmux and press prefix + I (capital i) to install tmux plugins"
     log_info "5. Your shell should now be zsh with oh-my-zsh"
 }
@@ -129,12 +128,11 @@ setup_desktop() {
     
     # Install vim-plug
     install_vim_plug
-    install_neovim_plug
     
     # Install TPM (Tmux Plugin Manager)
     install_tpm
     
-    # Link configuration files (including desktop configs)
+    # Link configuration files (including desktop configs + neovim)
     link_configs "desktop" "$SCRIPT_DIR"
     
     # Setup fzf

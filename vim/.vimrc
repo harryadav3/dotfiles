@@ -14,7 +14,8 @@ set guicursor=n-v-c:block,i-ci:ver25,r-cr:hor20,o:hor50
 
 " Additional essential settings
 set hidden                      " Allow switching buffers without saving
-set nowrap                      " Don't wrap lines (MAIN FIX!)
+"set nowrap                      " Don't wrap lines (MAIN FIX!)
+set wrap
 set display=lastline            " Show partial last line instead of @@@
 set sidescroll=1               " Smooth horizontal scrolling
 set sidescrolloff=5            " Keep 5 chars visible when scrolling

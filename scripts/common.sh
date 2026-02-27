@@ -180,19 +180,13 @@ install_vim_plug() {
 }
 
 install_neovim_plug() {
-    log_info "Installing vim-plug for neovim..."
+    log_info "Setting up LazyVim for neovim..."
     
-    local nvim_plug_path="$HOME/.local/share/nvim/site/autoload/plug.vim"
+    # LazyVim bootstraps itself via lazy.nvim in the config.
+    # The config files are stowed from the dotfiles repo.
+    # lazy.nvim will auto-install on first launch of nvim.
     
-    if [ -f "$nvim_plug_path" ]; then
-        log_warning "vim-plug for neovim is already installed"
-        return 0
-    fi
-    
-    curl -fLo "$nvim_plug_path" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    
-    log_success "vim-plug for neovim installed"
+    log_success "LazyVim config will be linked via stow. Run nvim to bootstrap plugins."
 }
 
 # =============================================================================
