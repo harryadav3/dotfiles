@@ -85,6 +85,9 @@ setup_ssh_machine() {
     # Install vim-plug
     install_vim_plug
     
+    # Install neovim from GitHub releases
+    install_neovim
+    
     # Install TPM (Tmux Plugin Manager)
     install_tpm
     
@@ -128,6 +131,9 @@ setup_desktop() {
     
     # Install vim-plug
     install_vim_plug
+    
+    # Install neovim from GitHub releases
+    install_neovim
     
     # Install TPM (Tmux Plugin Manager)
     install_tpm

@@ -189,6 +189,43 @@ install_neovim_plug() {
     log_success "LazyVim config will be linked via stow. Run nvim to bootstrap plugins."
 }
 
+# Install neovim from GitHub releases (latest stable)
+install_neovim() {
+    log_info "Installing Neovim from GitHub releases (latest stable)..."
+    
+    # Remove system neovim if installed (Ubuntu/Debian repo version is outdated)
+    if command -v apt-get &> /dev/null && dpkg -l neovim &> /dev/null 2>&1; then
+        log_info "Removing system neovim package..."
+        sudo apt remove -y neovim 2>/dev/null || true
+    elif command -v pacman &> /dev/null && pacman -Qi neovim &> /dev/null 2>&1; then
+        log_info "Removing system neovim package..."
+        sudo pacman -R --noconfirm neovim 2>/dev/null || true
+    fi
+    
+    # Check if neovim is already installed in /opt
+    if [ -x "/opt/nvim-linux-x86_64/bin/nvim" ]; then
+        log_warning "Neovim is already installed at /opt/nvim-linux-x86_64"
+        return 0
+    fi
+    
+    # Download latest neovim release
+    log_info "Downloading Neovim..."
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    
+    # Remove old installation if exists
+    sudo rm -rf /opt/nvim-linux-x86_64
+    
+    # Extract to /opt
+    log_info "Extracting Neovim to /opt..."
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    
+    # Clean up downloaded tarball
+    rm -f nvim-linux-x86_64.tar.gz
+    
+    log_success "Neovim installed to /opt/nvim-linux-x86_64"
+    log_info "PATH will be updated via .zshrc"
+}
+
 # =============================================================================
 # TMUX SETUP
 # =============================================================================
@@ -330,6 +367,12 @@ change_shell_to_zsh() {
 
 install_fzf_keybindings() {
     log_info "Installing fzf from GitHub..."
+    
+    # Remove system fzf if installed (Ubuntu/Debian repo version is outdated)
+    if command -v apt-get &> /dev/null && dpkg -l fzf &> /dev/null 2>&1; then
+        log_info "Removing system fzf package..."
+        sudo apt remove -y fzf 2>/dev/null || true
+    fi
     
     # Check if fzf is already installed
     if [ -d "$HOME/.fzf" ]; then

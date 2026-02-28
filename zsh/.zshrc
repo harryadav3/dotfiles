@@ -8,10 +8,11 @@ eval "$(fzf --zsh)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Neovim installed from GitHub releases
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-bindkey -s ^f "exec ~/tmux-sessionizer\n"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -81,6 +82,13 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+
+# Override robbyrussell prompt to show full directory path (%~ instead of %c)
+PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%~%{$reset_color%}"
+PROMPT+=' $(git_prompt_info)'
+
+# Ctrl+F to accept zsh-autosuggestions
+bindkey '^F' autosuggest-accept
 
 # User configuration
 

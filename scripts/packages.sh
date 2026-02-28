@@ -10,7 +10,6 @@
 DEV_PACKAGES=(
     'git'                # Version control
     'vim'                # Text editor
-    'neovim'             # Modern text editor
     'tmux'               # Terminal multiplexer
     'stow'               # Symlink farm manager
     'curl'               # URL retrieval utility
