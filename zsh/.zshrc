@@ -84,7 +84,7 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # Override robbyrussell prompt to show full directory path (%~ instead of %c)
-PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%~%{$reset_color%}"
+PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%d %{$fg[red]%}($USER)%{$reset_color%} ->"
 PROMPT+=' $(git_prompt_info)'
 
 # Ctrl+F to accept zsh-autosuggestions
