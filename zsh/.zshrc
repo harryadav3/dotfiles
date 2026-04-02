@@ -8,10 +8,11 @@ eval "$(fzf --zsh)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Neovim installed from GitHub releases
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-bindkey -s ^f "exec ~/tmux-sessionizer\n"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -78,9 +79,16 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+# Override robbyrussell prompt to show full directory path (%~ instead of %c)
+PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%d %{$fg[red]%}($USER)%{$reset_color%} ->"
+PROMPT+=' $(git_prompt_info)'
+
+# Ctrl+F to accept zsh-autosuggestions
+bindkey '^F' autosuggest-accept
 
 # User configuration
 
@@ -112,8 +120,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 alias ccc="cd ~/coding"
-alias cca="cd ~/coding/ai-ml/"
-
+alias nv="nvidia-smi"
+alias duf="du -h --max-depth=1"
+alias venv="source venv/bin/activate"
+alias vv="source .venv/bin/activate"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

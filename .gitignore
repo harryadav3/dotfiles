@@ -1,0 +1,45 @@
+# Backup directories
+.dotfiles_backup_*
+
+# Log files
+*.log
+/tmp/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Temporary files
+*.tmp
+.cache/
+
+# Plugin directories (these get installed by scripts)
+.oh-my-zsh/
+.vim/plugged/
+.local/share/nvim/
+.tmux/plugins/
+
+# Don't track personal/sensitive data
+*.pem
+*.key
+*_rsa
+*_dsa
+*_ed25519
+*.pub
