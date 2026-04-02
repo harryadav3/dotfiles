@@ -15,6 +15,7 @@ DEV_PACKAGES=(
     'curl'               # URL retrieval utility
     'wget'               # File retrieval utility
     'ripgrep'            # Fast grep alternative (rg)
+    'tig'                # Text-mode interface for git
     'bat'                # Cat with syntax highlighting
 )
 

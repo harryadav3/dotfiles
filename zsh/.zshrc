@@ -79,7 +79,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,6 +121,9 @@ bindkey '^F' autosuggest-accept
 
 alias ccc="cd ~/coding"
 alias nv="nvidia-smi"
+alias duf="du -h --max-depth=1"
+alias venv="source venv/bin/activate"
+alias vv="source .venv/bin/activate"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
