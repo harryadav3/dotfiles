@@ -38,6 +38,17 @@ BUILD_DEPS_PACMAN=(
     'openssl'
 )
 
+# Extra CLI tools whose package names differ per distro (used by the nvim config)
+EXTRA_PACKAGES_APT=(
+    'fd-find'            # fd (installed as fdfind)
+    'unzip'              # Needed by nvim plugin/LSP installers
+)
+
+EXTRA_PACKAGES_PACMAN=(
+    'fd'
+    'unzip'
+)
+
 # =============================================================================
 # DESKTOP PACKAGES (Only for desktop setup with i3)
 # =============================================================================
@@ -81,6 +92,7 @@ TERMINAL_PACKAGES=(
 # Desktop system utilities
 DESKTOP_UTILITIES=(
     'dunst'              # Notification daemon
+    'xclip'              # Clipboard (used by tmux copy-mode binding)
     'feh'                # Image viewer and wallpaper setter
     'flameshot'          # Screenshot tool
     'rofi'               # Application launcher (alternative to dmenu)
@@ -158,19 +170,20 @@ install_ssh_packages() {
     case $pkg_manager in
         "apt")
             echo "Installing packages for Ubuntu/Debian..."
-            sudo apt-get update
-            sudo apt-get install -y \
+            $SUDO apt-get install -y \
                 "${DEV_PACKAGES[@]}" \
                 "${SHELL_PACKAGES[@]}" \
-                "${BUILD_DEPS_APT[@]}"
+                "${BUILD_DEPS_APT[@]}" \
+                "${EXTRA_PACKAGES_APT[@]}"
+            link_debian_binaries
             ;;
         "pacman")
             echo "Installing packages for Arch Linux..."
-            sudo pacman -Sy
-            sudo pacman -S --needed --noconfirm \
+            $SUDO pacman -S --needed --noconfirm \
                 "${DEV_PACKAGES[@]}" \
                 "${SHELL_PACKAGES[@]}" \
-                "${BUILD_DEPS_PACMAN[@]}"
+                "${BUILD_DEPS_PACMAN[@]}" \
+                "${EXTRA_PACKAGES_PACMAN[@]}"
             ;;
         *)
             echo "Unsupported package manager: $pkg_manager"
@@ -189,7 +202,7 @@ install_desktop_packages() {
     case $pkg_manager in
         "apt")
             echo "Installing desktop packages for Ubuntu/Debian..."
-            sudo apt-get install -y \
+            $SUDO apt-get install -y \
                 i3 \
                 "${XORG_PACKAGES_APT[@]}" \
                 "${TERMINAL_PACKAGES[@]}" \
@@ -202,7 +215,7 @@ install_desktop_packages() {
             ;;
         "pacman")
             echo "Installing desktop packages for Arch Linux..."
-            sudo pacman -S --needed --noconfirm \
+            $SUDO pacman -S --needed --noconfirm \
                 "${I3_PACKAGES[@]}" \
                 "${XORG_PACKAGES[@]}" \
                 "${TERMINAL_PACKAGES[@]}" \

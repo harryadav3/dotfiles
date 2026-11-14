@@ -4,13 +4,13 @@
 
 ```bash
 # Clone and run
-git clone https://github.com/harryadav3/dotfiles.git ~/.dotfiles
+git clone --recurse-submodules https://github.com/harryadav3/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-chmod +x setup-new.sh
-./setup-new.sh --ssh
+chmod +x setup.sh
+./setup.sh --ssh
 ```
 
-**What you get**: zsh + vim + neovim + tmux + ranger + fzf + ripgrep + bat
+**What you get**: zsh + vim + neovim + tmux + ranger + fzf + ripgrep + bat + fd
 
 ---
 
@@ -18,10 +18,10 @@ chmod +x setup-new.sh
 
 ```bash
 # Clone and run
-git clone https://github.com/harryadav3/dotfiles.git ~/.dotfiles
+git clone --recurse-submodules https://github.com/harryadav3/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-chmod +x setup-new.sh
-./setup-new.sh --desktop
+chmod +x setup.sh
+./setup.sh --desktop
 ```
 
 **What you get**: Everything from SSH setup + i3 + kitty + dunst + desktop environment
@@ -40,10 +40,10 @@ chmod +x setup-new.sh
 ## Commands
 
 ```bash
-./setup-new.sh --ssh      # Minimal setup
-./setup-new.sh --desktop  # Full desktop setup
-./setup-new.sh --list     # List all packages
-./setup-new.sh --help     # Show help
+./setup.sh --ssh      # Minimal setup
+./setup.sh --desktop  # Full desktop setup
+./setup.sh --list     # List all packages
+./setup.sh --help     # Show help
 ```
 
 ---
