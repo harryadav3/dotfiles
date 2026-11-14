@@ -3,7 +3,8 @@
 set -o vi
 
 #this is the fzf confuguration file 
-eval "$(fzf --zsh)"
+export PATH="$HOME/.local/bin:$HOME/.fzf/bin:$PATH"
+command -v fzf > /dev/null && eval "$(fzf --zsh)"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -13,6 +14,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -79,7 +81,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# Plugins are pinned by setup.sh; oh-my-zsh self-update would detach from the pin
+zstyle ':omz:update' mode disabled
+
+plugins=(git zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%d %{$fg[red]%}($USER)%{$reset_color%} ->"
 PROMPT+=' $(git_prompt_info)'
 
-# Ctrl+F to accept zsh-autosuggestions
+# Ctrl+F to accept zsh-autosuggestions (must come after oh-my-zsh so the widget exists)
 bindkey '^F' autosuggest-accept
 
 # User configuration

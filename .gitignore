@@ -43,3 +43,6 @@ Thumbs.db
 *_dsa
 *_ed25519
 *.pub
+.env
+.env.*
+.ssh/

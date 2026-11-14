@@ -8,7 +8,13 @@
 #   ./setup.sh --desktop  # Install full desktop setup (includes i3, kitty, dunst + dev tools)
 #   ./setup.sh --help     # Show help message
 
-set -e  # Exit on any error
+set -eo pipefail  # Exit on any error, including failures inside pipelines
+
+# Running under sudo would link configs into root's $HOME instead of the user's
+if [ -n "${SUDO_USER:-}" ]; then
+    echo "Do not run this script with sudo; it calls sudo itself when needed." >&2
+    exit 1
+fi
 
 # =============================================================================
 # SCRIPT CONFIGURATION
@@ -96,9 +102,11 @@ setup_ssh_machine() {
     
     # Setup fzf
     install_fzf_keybindings
+    install_uv
     
     # Change default shell to zsh
     change_shell_to_zsh
+    check_nvim_version
     
     log_success "SSH/Server setup completed successfully!"
     echo
@@ -143,9 +151,11 @@ setup_desktop() {
     
     # Setup fzf
     install_fzf_keybindings
+    install_uv
     
     # Change default shell to zsh
     change_shell_to_zsh
+    check_nvim_version
     
     log_success "Desktop setup completed successfully!"
     echo
